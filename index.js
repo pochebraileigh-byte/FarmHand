@@ -47,6 +47,8 @@ async function callWorker(endpoint, method = 'POST', body = null) {
 // ── Message handler ───────────────────────────────────────────────────────────
 
 client.on('messageCreate', async (message) => {
+  // Debug log every message to see what we're receiving
+  console.log(`MSG from ${message.author.username} (bot:${message.author.bot}) id:${message.author.id}: ${message.content}`);
   // Block Farm Hand itself to prevent loops, but allow other bots (AIs) to play
   if (message.author.id === client.user.id) return;
   if (!message.content.startsWith('!')) return;
