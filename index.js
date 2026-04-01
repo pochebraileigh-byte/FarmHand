@@ -24,9 +24,10 @@ const client = new Client({
 const COMMANDS = new Set([
   'farm', 'farmstatus',
   'plant', 'water', 'harvest',
-  'fish',
+  'fish', 'beachsearch', 'seafish',
   'barn', 'care', 'collect',
-  'shop', 'buy', 'sell',
+  'shop', 'buy', 'sell', 'sellall', 'selljunk',
+  'expandfarm',
   'inventory', 'inv',
   'help',
 ]);
