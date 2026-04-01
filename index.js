@@ -47,7 +47,8 @@ async function callWorker(endpoint, method = 'POST', body = null) {
 // ── Message handler ───────────────────────────────────────────────────────────
 
 client.on('messageCreate', async (message) => {
-  if (message.author.bot) return;
+  // Block Farm Hand itself to prevent loops, but allow other bots (AIs) to play
+  if (message.author.id === client.user.id) return;
   if (!message.content.startsWith('!')) return;
 
   const parts = message.content.slice(1).trim().split(/\s+/);
