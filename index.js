@@ -63,13 +63,15 @@ client.on('messageCreate', async (message) => {
   const username = message.author.username;
 
   try {
-    await callWorker('/internal/command', 'POST', {
+    console.log(`Calling worker: ${command} for ${username} in ${channelId}`);
+    const result = await callWorker('/internal/command', 'POST', {
       command,
       args,
       channelId,
       userId,
       username,
     });
+    console.log(`Worker response:`, JSON.stringify(result));
   } catch (e) {
     console.error(`Command error [${command}]:`, e.message);
     await message.channel.send('⚠️ Something went wrong. The farm will recover.');
