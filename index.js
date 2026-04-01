@@ -76,8 +76,8 @@ client.on('messageCreate', async (message) => {
 // ── Ready ─────────────────────────────────────────────────────────────────────
 
 client.once('ready', () => {
-  console.log(`🌾 Harrowsville Bot online as ${client.user.tag}`);
-  client.user.setActivity('the farm 🌱', { type: 0 }); // "Playing the farm 🌱"
+  console.log(`🌾 Farm Hand online as ${client.user.tag}`);
+  client.user.setActivity('Harrow Cove 🌾', { type: 0 }); // "Playing Harrow Cove 🌾"
 });
 
 client.login(BOT_TOKEN);
