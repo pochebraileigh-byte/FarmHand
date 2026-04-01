@@ -1,0 +1,11 @@
+services:
+  - type: worker
+    name: harrowsville-bot
+    env: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: WORKER_URL
+        sync: false

@@ -1,0 +1,83 @@
+/**
+ * Harrowsville Farm Bot
+ * Gateway bot for Lighthouse Farms — reads ! commands, calls Worker API
+ */
+
+const { Client, GatewayIntentBits } = require('discord.js');
+
+const BOT_TOKEN = process.env.DISCORD_TOKEN;
+const WORKER_URL = process.env.WORKER_URL; // https://harrowsville-bot.harrowhouse.workers.dev
+
+if (!BOT_TOKEN) { console.error('Missing DISCORD_TOKEN'); process.exit(1); }
+if (!WORKER_URL) { console.error('Missing WORKER_URL'); process.exit(1); }
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
+});
+
+// ── Command map ───────────────────────────────────────────────────────────────
+
+const COMMANDS = new Set([
+  'farm', 'farmstatus',
+  'plant', 'water', 'harvest',
+  'fish',
+  'barn', 'care', 'collect',
+  'shop', 'buy', 'sell',
+  'inventory', 'inv',
+  'help',
+]);
+
+// ── Call the Worker API ───────────────────────────────────────────────────────
+
+async function callWorker(endpoint, method = 'POST', body = null) {
+  const opts = {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(`${WORKER_URL}${endpoint}`, opts);
+  if (!res.ok) throw new Error(`Worker error: ${res.status}`);
+  return res.json().catch(() => ({}));
+}
+
+// ── Message handler ───────────────────────────────────────────────────────────
+
+client.on('messageCreate', async (message) => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith('!')) return;
+
+  const parts = message.content.slice(1).trim().split(/\s+/);
+  const command = parts[0].toLowerCase();
+  if (!COMMANDS.has(command)) return;
+
+  const args = parts.slice(1);
+  const channelId = message.channel.id;
+  const userId = message.author.id;
+  const username = message.author.username;
+
+  try {
+    await callWorker('/internal/command', 'POST', {
+      command,
+      args,
+      channelId,
+      userId,
+      username,
+    });
+  } catch (e) {
+    console.error(`Command error [${command}]:`, e.message);
+    await message.channel.send('⚠️ Something went wrong. The farm will recover.');
+  }
+});
+
+// ── Ready ─────────────────────────────────────────────────────────────────────
+
+client.once('ready', () => {
+  console.log(`🌾 Harrowsville Bot online as ${client.user.tag}`);
+  client.user.setActivity('the farm 🌱', { type: 0 }); // "Playing the farm 🌱"
+});
+
+client.login(BOT_TOKEN);
