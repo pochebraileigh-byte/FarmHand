@@ -25,7 +25,7 @@ const COMMANDS = new Set([
   'farm', 'farmstatus',
   'plant', 'water', 'harvest',
   'fish', 'beachsearch', 'seafish',
-  'barn', 'care', 'collect',
+  'barn', 'care', 'collect', 'incubate',
   'shop', 'buy', 'sell', 'sellall', 'selljunk',
   'expandfarm', 'give', 'donate', 'rename', 'gift',
   'forage', 'fund', 'leaderboard', 'profile', 'checkin',
