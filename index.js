@@ -35,6 +35,9 @@ const COMMANDS = new Set([
   'menu',
   'order',
   'tab',
+  'opentab',
+  'closetab',
+  'bartab',
   'map',
   'help',
 ]);
