@@ -38,6 +38,8 @@ const COMMANDS = new Set([
   'opentab',
   'closetab',
   'bartab',
+  'karaoke',
+  'sing',
   'map',
   'help',
 ]);
