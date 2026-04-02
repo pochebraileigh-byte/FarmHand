@@ -30,6 +30,7 @@ const COMMANDS = new Set([
   'expandfarm', 'give', 'donate', 'rename', 'gift',
   'forage', 'fund', 'leaderboard', 'profile', 'checkin',
   'collection',
+  'coins',
   'inventory', 'inv',
   'menu',
   'order',
