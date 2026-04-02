@@ -31,6 +31,7 @@ const COMMANDS = new Set([
   'forage', 'fund', 'leaderboard', 'profile', 'checkin',
   'collection',
   'inventory', 'inv',
+  'map',
   'help',
 ]);
 
