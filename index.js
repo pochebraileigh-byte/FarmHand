@@ -40,6 +40,7 @@ const COMMANDS = new Set([
   'bartab',
   'karaoke',
   'sing',
+  'tattoo',
   'map',
   'help',
 ]);
