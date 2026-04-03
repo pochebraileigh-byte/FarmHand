@@ -23,7 +23,7 @@ const client = new Client({
 
 const COMMANDS = new Set([
   'farm', 'farmstatus',
-  'plant', 'water', 'harvest',
+  'plant', 'water', 'harvest', 'harvestall',
   'fish', 'beachsearch', 'seafish',
   'barn', 'care', 'collect', 'incubate',
   'shop', 'buy', 'sell', 'sellall', 'selljunk',
