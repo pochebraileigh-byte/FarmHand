@@ -27,7 +27,7 @@ const COMMANDS = new Set([
   'fish', 'beachsearch', 'seafish',
   'barn', 'care', 'collect', 'incubate',
   'shop', 'buy', 'sell', 'sellall', 'selljunk',
-  'expandfarm', 'give', 'donate', 'rename', 'gift',
+  'expandfarm', 'give', 'donate', 'rename',
   'forage', 'fund', 'leaderboard', 'profile', 'checkin',
   'collection',
   'coins',
