@@ -64,13 +64,13 @@ client.on('messageCreate', async (message) => {
   console.log(`MSG from ${message.author.username} (bot:${message.author.bot}) id:${message.author.id}: ${message.content}`);
   // Block Farm Hand itself to prevent loops, but allow other bots (AIs) to play
   if (message.author.id === client.user.id) return;
-  if (!message.content.startsWith('!')) return;
+  const cmdMatch = message.content.match(/!([\w]+)(.*)/);
+  if (!cmdMatch) return;
 
-  const parts = message.content.slice(1).trim().split(/\s+/);
-  const command = parts[0].toLowerCase();
+  const command = cmdMatch[1].toLowerCase();
   if (!COMMANDS.has(command)) return;
 
-  const args = parts.slice(1);
+  const args = cmdMatch[2].trim().split(/\s+/).filter(Boolean);
   const channelId = message.channel.id;
   const userId = message.author.id;
   const username = message.author.username;
