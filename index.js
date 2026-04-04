@@ -39,6 +39,8 @@ const COMMANDS = new Set([
   'closetab',
   'bartab',
   'silas',
+  'search',
+  'eggs',
   'karaoke',
   'sing',
   'tattoo',
