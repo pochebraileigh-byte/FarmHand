@@ -46,6 +46,10 @@ const COMMANDS = new Set([
   'tattoo',
   'map',
   'help',
+  'adopt',
+  'feedpet',
+  'waterpet',
+  'playwithpet',
 ]);
 
 // ── Call the Worker API ───────────────────────────────────────────────────────
