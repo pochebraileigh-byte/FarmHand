@@ -45,6 +45,7 @@ const COMMANDS = new Set([
   'decline',
   'karaoke',
   'sing',
+  'toast',
   'tattoo',
   'map',
   'help',
