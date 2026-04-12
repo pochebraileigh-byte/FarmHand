@@ -28,7 +28,7 @@ const COMMANDS = new Set([
   'barn', 'care', 'collect', 'incubate',
   'shop', 'buy', 'sell', 'sellall', 'selljunk',
   'expandfarm', 'expandbarn', 'give', 'rename',
-  'forage', 'fund', 'leaderboard', 'profile', 'checkin',
+  'forage', 'fund', 'leaderboard', 'profile', 'checkin', 'events',
   'collection',
   'coins',
   'inventory', 'inv',
